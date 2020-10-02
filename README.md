@@ -28,7 +28,7 @@
 | category_id      | int        | null: false                    |
 | status_id        | int        | null: false                    |
 | postage_user_id  | int        | null: false                    |
-| shipping_from_id | int        | null: false                    |
+| state_id         | int        | null: false                    |
 | shipping_date_id | int        | null: false                    |
 | price            | int        | null: false                    |
 
