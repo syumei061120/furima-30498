@@ -16,12 +16,13 @@
 ### Association
 
 -has_many :items
+-has_many :purchaces
 
 ## items テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
 | name             | string     | null: false                    |
 | explanation      | text       | null: false                    |
 | category_id      | int        | null: false                    |
@@ -34,24 +35,26 @@
 ### Association
 
 -belongs_to :user
-
+-has_one :purchace
 
 ## purchaces テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user_id          | references | null: false, foreign_key: true |
-| item_id          | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 ### Association
 
 -has_one :address
+-belongs_to :user
+-belongs_to :item
 
 ## addresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| purchace_id      | references | null: false, foreign_key: true |
+| purchace         | references | null: false, foreign_key: true |
 | postal_code      | string     | null: false                    |
 | state_id         | int        | null: false                    |
 | city             | string     | null: false                    |
