@@ -6,15 +6,15 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
-    validates :category_id, numericality: {other_than: 0, message: 'Select'}
-    validates :status_id, numericality: {other_than: 0, message: 'Select'}
-    validates :postage_user_id, numericality: {other_than: 0, message: 'Select'}
-    validates :state_id, numericality: {other_than: 0, message: 'Select'}
-    validates :shipping_date_id, numericality: {other_than: 0, message: 'Select'}
+    validates :category_id
+    validates :status_id
+    validates :postage_user_id
+    validates :state_id
+    validates :shipping_date_id
     validates :price, format: { with: /\A[0-9]+\z/ , message: 'Price Half-width number'}
   end
 
-  with_options numericality: {other_than: 1} do
+  with_options numericality: {other_than: 0, message: 'Select'} do
   validates :category_id
   validates :status_id
   validates :postage_user_id
