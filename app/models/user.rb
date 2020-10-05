@@ -13,6 +13,6 @@ class User < ApplicationRecord
     validates :birthday
   end
 
-  validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, message: 'Password Include both letters and numbers'
+  validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, message: 'Include both letters and numbers'
   attr_accessor :token
 end

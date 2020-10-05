@@ -46,13 +46,13 @@ RSpec.describe User, type: :model do
       @user.password = 'abcdef'
       @user.password_confirmation = @user.password
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password は6文字以上の英数混在で入力してください。')
+      expect(@user.errors.full_messages).to include('PasswordInclude both letters and numbers')
     end
     it 'passwordが半角数字のみだと保存できないこと' do
       @user.password = '123456'
       @user.password_confirmation = @user.password
       @user.valid?
-      expect(@user.errors.full_messages).to include('Password は6文字以上の英数混在で入力してください。')
+      expect(@user.errors.full_messages).to include('Password Include both letters and numbers')
     end
     it 'passwordと確認用パスワードが一致しないと保存できないこと' do
       @user.password_confirmation = ''
