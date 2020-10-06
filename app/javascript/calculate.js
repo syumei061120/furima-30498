@@ -10,13 +10,10 @@ function check(){
       value = value - culTax(value)
       return value;
     }
-
     value = price.value;
-    console.log(value)
     let culAddTaxPriceForm = document.getElementById("add-tax-price");
     culAddTaxPriceForm.innerHTML = Math.floor(culTax(value));
     
-
     let profitForm = document.getElementById("profit");
     profitForm.innerHTML = Math.floor(culProfit(value));
   })
