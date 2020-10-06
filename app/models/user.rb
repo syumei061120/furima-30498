@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :item
-
   name_validation = /\A[ぁ-んァ-ン一-龥]/
   name_kana_validation = /\A[ァ-ヶー－]+\z/
 
