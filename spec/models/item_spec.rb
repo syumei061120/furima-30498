@@ -25,30 +25,50 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include("Category can't be blank")
     end
+    it 'categoryが0だと保存できないこと' do
+      @item.category_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Category Select")
+    end
     it 'statusが空だと保存できないこと' do
       @item.status_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Status can't be blank")
+    end
+    it 'statusが0だと保存できないこと' do
+      @item.status_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Status Select")
     end
     it 'postage_userが空だと保存できないこと' do
       @item.postage_user_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Postage user can't be blank")
     end
+    it 'postage_userが0だと保存できないこと' do
+      @item.postage_user_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Postage user Select")
+    end
     it 'stateが空だと保存できないこと' do
       @item.state_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("State can't be blank")
     end
-    it 'shipping_date_idが空だと保存できないこと' do
-      @item.shipping_date_id = nil
+    it 'stateが0だと保存できないこと' do
+      @item.state_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include("Shipping date can't be blank")
+      expect(@item.errors.full_messages).to include("State Select")
     end
     it 'shipping_date_idが空だと保存できないこと' do
       @item.shipping_date_id = nil
       @item.valid?
       expect(@item.errors.full_messages).to include("Shipping date can't be blank")
+    end
+    it 'shipping_date_idが0だと保存できないこと' do
+      @item.shipping_date_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include("Shipping date Select")
     end
     it 'priceが空だと保存できないこと' do
       @item.price = nil
