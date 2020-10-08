@@ -23,9 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.purchace.present? || current_user.id != @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.purchace.present? || current_user.id != @item.user_id
   end
 
   def update
@@ -36,7 +34,6 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-
 
   private
 
