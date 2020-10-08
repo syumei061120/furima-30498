@@ -14,7 +14,6 @@ RSpec.describe PurchaceAddress, type: :model do
       expect(@purchace_address).to be_valid
     end
 
-
     it 'カード情報が正しくなく、tokenが空では登録できないこと' do
       @purchace_address.token = nil
       @purchace_address.valid?
