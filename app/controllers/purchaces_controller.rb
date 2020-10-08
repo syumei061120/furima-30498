@@ -5,9 +5,7 @@ class PurchacesController < ApplicationController
     @purchace = Purchace.find_by(item_id: params[:item_id])
     @purchace_address = PurchaceAddress.new
 
-    if current_user.id == @item.user_id || @purchace.present?
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id || @purchace.present?
   end
 
   def create
@@ -17,7 +15,7 @@ class PurchacesController < ApplicationController
     if @purchace_address.valid?
       pay_item
       @purchace_address.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       @item = Item.find(9)
       render 'index'
@@ -29,9 +27,9 @@ class PurchacesController < ApplicationController
   def purchace_params
     params.permit(:item_id, :postal_code, :state_id, :city, :address_line, :building, :telephone, :token).merge(token: params[:token], user_id: current_user.id)
   end
-  
+
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchace_params[:token],
