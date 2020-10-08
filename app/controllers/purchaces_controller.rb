@@ -1,7 +1,7 @@
 class PurchacesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   def index
-    @item = Item.find(10)
+    @item = Item.find(params[:item_id])
     @purchace = Purchace.find_by(item_id: params[:item_id])
     @purchace_address = PurchaceAddress.new
 
@@ -10,14 +10,14 @@ class PurchacesController < ApplicationController
 
   def create
     @purchace_address = PurchaceAddress.new(purchace_params)
-    @item = Item.find(9)
+    @item = Item.find(params[:item_id])
 
     if @purchace_address.valid?
       pay_item
       @purchace_address.save
       redirect_to root_path
     else
-      @item = Item.find(9)
+      @item = find(params[:item_id])
       render 'index'
     end
   end

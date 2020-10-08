@@ -6,7 +6,7 @@ class PurchaceAddress
     validates :state_id, numericality: { other_than: 0, message: 'Select' }
     validates :city
     validates :address_line
-    validates :telephone, format: { with: /\A[0-9]{,11}\z/, message: 'Input only number' }
+    validates :telephone, format: { with: /\A[0-9]{10,11}\z/, message: 'Input only number' }
     validates :token
   end
 

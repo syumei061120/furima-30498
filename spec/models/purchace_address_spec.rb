@@ -9,6 +9,11 @@ RSpec.describe PurchaceAddress, type: :model do
     it '全ての値が正しく入力されていれば保存できること' do
       expect(@purchace_address).to be_valid
     end
+    it 'buildingが空でも保存できること' do
+      @purchace_address.building = nil
+      expect(@purchace_address).to be_valid
+    end
+
 
     it 'カード情報が正しくなく、tokenが空では登録できないこと' do
       @purchace_address.token = nil
