@@ -131,7 +131,6 @@
             <%= link_to item_path(item.id) do %>
               <div class='item-img-content'>
                 <%= image_tag item.image, class: "item-img" %>
-                <%# 商品が売れていればsold outを表示しましょう %>
                 <% @purchaces.each do |purchase|%>
                   <% if purchase.item_id == item.id %>
                     <div class='sold-out'>
@@ -140,7 +139,6 @@
                   <% end %>
                 <% end %>
               </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
               <div class='item-info'>
                 <h3 class='item-name'>
                   <%= item.name %>
