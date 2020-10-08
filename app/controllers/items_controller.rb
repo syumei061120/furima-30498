@@ -23,11 +23,9 @@ class ItemsController < ApplicationController
     @purchace = Purchace.find_by(item_id: params[:id])
   end
 
-
   private
 
   def item_params
     params.require(:item).permit(:name, :image, :explanation, :category_id, :status_id, :postage_user_id, :state_id, :shipping_date_id, :price).merge(user_id: current_user.id)
   end
-  
 end
