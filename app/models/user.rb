@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :item
+  has_one :purchace
 
   name_validation = /\A[ぁ-んァ-ン一-龥]/
   name_kana_validation = /\A[ァ-ヶー－]+\z/
