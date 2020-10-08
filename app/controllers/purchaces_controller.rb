@@ -11,7 +11,6 @@ class PurchacesController < ApplicationController
 
   def create
     @purchace_address = PurchaceAddress.new(purchace_params)
-    binding.pry
     @item = Item.find(9)
 
     if @purchace_address.valid?
