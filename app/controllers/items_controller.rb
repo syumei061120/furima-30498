@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   def index
     @items = Item.all.order('created_at DESC')
-    @purchaces = Purchace.select(:item_id)
   end
 
   def new
@@ -20,7 +19,6 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    @purchace = Purchace.find_by(item_id: params[:id])
   end
 
   private
