@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if Item.delete(params[:id])
+    if @item.delete
       redirect_to root_path
     else
       render :show
