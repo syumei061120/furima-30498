@@ -33,7 +33,7 @@ class PurchacesController < ApplicationController
       currency: 'jpy'
     )
   end
-  
+
   def item_find
     @item = Item.find(params[:item_id])
   end
