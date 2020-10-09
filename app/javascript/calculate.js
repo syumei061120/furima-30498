@@ -7,7 +7,7 @@ function check(){
       return value;
     }
     function culProfit(value){
-      value = value - culTax(value)
+      value = value - Math.floor(culTax(value))
       return value;
     }
     value = price.value;
