@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_date
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :purchace
 
   with_options presence: true do
-    validates :image
+    validates :images
     validates :name
     validates :explanation
     with_options numericality: { other_than: 0, message: 'Select' } do
