@@ -33,7 +33,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
     document.getElementById('item-image').addEventListener('change', (e) => {
       
       let file = e.target.files[0];
-      console.log(file)
       let blob = window.URL.createObjectURL(file);
     
       createImageHTML(blob);
