@@ -14,13 +14,13 @@ class Item < ApplicationRecord
     validates :images
     validates :name
     validates :explanation
-    with_options numericality: { other_than: 0, message: 'Select' } do
+    with_options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :category_id
       validates :status_id
       validates :postage_user_id
       validates :state_id
       validates :shipping_date_id
     end
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'Out of setting range' }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は ¥300〜9,999,999 で設定してください' }
   end
 end
