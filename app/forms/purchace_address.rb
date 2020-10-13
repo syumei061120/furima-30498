@@ -2,11 +2,11 @@ class PurchaceAddress
   include ActiveModel::Model
   attr_accessor :user_id, :postal_code, :state_id, :city, :address_line, :building, :telephone, :token, :item_id
   with_options presence: true do
-    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'Input correctly' }
-    validates :state_id, numericality: { other_than: 0, message: 'Select' }
+    validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'を正しい形式で入力して下さい' }
+    validates :state_id, numericality: { other_than: 0, message: 'を選択してください' }
     validates :city
     validates :address_line
-    validates :telephone, format: { with: /\A[0-9]{10,11}\z/, message: 'Input only number' }
+    validates :telephone, format: { with: /\A[0-9]{10,11}\z/, message: 'は数字のみ入力してください' }
     validates :token
   end
 

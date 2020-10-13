@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     validates :images
     validates :name
     validates :explanation
-    with_options numericality: { other_than: 0, message: 'Select' } do
+    with_options numericality: { other_than: 0, message: 'を選択してください' } do
       validates :category_id
       validates :status_id
       validates :postage_user_id
