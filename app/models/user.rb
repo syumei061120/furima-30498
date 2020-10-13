@@ -12,12 +12,12 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :family_name, format: { with: name_validation, message: 'Full-width characters.' }
-    validates :first_name, format: { with: name_validation, message: 'Full-width characters.' }
-    validates :family_name_kana, format: { with: name_kana_validation, message: 'Full-width katakana characters.' }
-    validates :first_name_kana, format: { with: name_kana_validation, message: 'Full-width katakana characters.' }
+    validates :family_name, format: { with: name_validation, message: 'は全角で入力してください' }
+    validates :first_name, format: { with: name_validation, message: 'は全角で入力してください' }
+    validates :family_name_kana, format: { with: name_kana_validation, message: 'は全角カタカナで入力してください' }
+    validates :first_name_kana, format: { with: name_kana_validation, message: 'は全角カタカナで入力してください' }
     validates :birthday
   end
 
-  validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, message: 'Include both letters and numbers'
+  validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, message: 'は英字と数字の両方を含めて設定してください'
 end
