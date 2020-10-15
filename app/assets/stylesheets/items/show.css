@@ -24,13 +24,28 @@
   font-weight: bold;
   font-size: 25px;
 }
-
+.item-img-content-box{
+  position: relative;
+}
 .item-box-img {
   height: 50vh;
   width: 60vw;
   min-height: 500px;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
+}
+.show-sold-out {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  background-color: crimson;
+  transform: skewY(-10deg);
+}
+.show-sold-out>span {
+  color: #FFF;
+  font-size: 45px;
+  font: bold;
 }
 
 .item-price-box {
