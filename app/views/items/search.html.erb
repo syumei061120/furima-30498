@@ -1,0 +1,49 @@
+<%= render "shared/header" %>
+  <div class='search-items-show'>
+    <div>
+      <%= search_form_for @p, url:search_items_path, class: 'sort-form' do |f| %>
+        <%= f.select( :sorts, { '---': 'id desc', '価格の安い順': 'price asc', '価格の高い順': 'price desc', '出品の古い順': 'updated_at asc', '出品の新しい順': 'updated_at desc' } )%>        
+        <%= f.submit "並び替え",class:'sort-submit'%>
+      <% end %>
+    </div>
+    <%# 検索結果 %>
+    <div class='search-items-box'>
+      <h2 class='name'>検索結果</h2>
+      <% if @items.length !=0%>
+        <ul class='search-item-lists'>
+          <% @items.each do |item| %>
+            <li class='list'>
+              <%= link_to item_path(item.id) do %>
+                <div class='search-item-img-content'>
+                  <% item.images.each do |image| %>
+                    <%= image_tag image, class: "search-item-img" %>
+                    <% if item.purchace.present? %>
+                      <div class='search-sold-out'>
+                        <span>Sold Out!!</span>
+                      </div>
+                    <% end %>
+                    <% break %>
+                  <% end %>
+                </div>
+                <div class='item-info'>
+                  <h3 class='item-name'>
+                    <%= item.name %>
+                  </h3>
+                  <div class='item-price'>
+                    <span><%= item.price %>円<br>(税込み)</span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <div>該当する商品はまだ出品されていません。</div>
+      <% end %>
+    </div>
+  </div>
+<%= render "shared/footer" %>
