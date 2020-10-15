@@ -15,9 +15,9 @@
     <ul class='lists-left'>
       <li class="category-list">
         <div id="lists">カテゴリー</div>
-          <%= search_form_for @p, url:search_items_path, class: 'show-lists hidden',id: 'pull-down' do |f| %>
-            <%= f.collection_select :category_id_eq, Category.all, :id, :name %>
-            <%= f.submit %>
+          <%= search_form_for @p, url:search_items_path, class: 'category-lists hidden',id: 'pull-down' do |f| %>
+            <%= f.collection_select :category_id_eq, Category.where.not(id: 0), :id, :name %>
+            <%= f.submit "検索",class:'category-submit' %>
           <% end %>
       </li>
     </ul>
