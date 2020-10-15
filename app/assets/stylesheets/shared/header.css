@@ -57,16 +57,10 @@
 .lists-left {
   display: flex;
   min-width: 200px;
-
+  position: relative;
 }
 
 .category-list {
-  text-decoration: none;
-  margin-right: 3vw;
-  color: #333333;
-}
-
-.brand-list {
   text-decoration: none;
   color: #333333;
 }
@@ -102,3 +96,14 @@
   text-decoration: none;
   color: #333333;
 }
+
+.show-lists{
+  position: absolute;
+  left: 0px;
+  top: 40px;
+}
+
+.hidden{
+  display: none;
+}
+
