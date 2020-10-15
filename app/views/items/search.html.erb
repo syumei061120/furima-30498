@@ -1,4 +1,5 @@
 <%= render "shared/header" %>
+<% breadcrumb :search %>
   <div class='search-items-show'>
     <div class='sort'>
       <%= search_form_for @p, url:search_items_path, class: 'sort-form' do |f| %>

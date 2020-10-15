@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :search do
-  link "商品一覧", search_items_path
+  link "検索画面", search_items_path
   parent :root
 end
 
