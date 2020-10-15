@@ -1,7 +1,6 @@
 if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
   document.addEventListener('DOMContentLoaded', function(){
-  const ImageList = document.getElementById('image-list');
-
+  const ImageList = document.getElementById('image-list')
     //画像を表示する関数
     const createImageHTML = (blob) => {
       //画像をを表示するdivと画像を生成
@@ -22,12 +21,11 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       imageElement.appendChild(blobImage)
       imageElement.appendChild(inputHTML)
       ImageList.appendChild(imageElement)
-
       inputHTML.addEventListener('change', (e) => {
         file = e.target.files[0];
         blob = window.URL.createObjectURL(file);
 
-        createImageHTML(blob);
+        createImageHTML(blob)
       })
     }
     document.getElementById('item-image').addEventListener('change', (e) => {
@@ -35,7 +33,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       let file = e.target.files[0];
       let blob = window.URL.createObjectURL(file);
     
-      createImageHTML(blob);
+      createImageHTML(blob)
     });
   });
 }
