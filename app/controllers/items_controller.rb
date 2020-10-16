@@ -47,6 +47,17 @@ class ItemsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @item.comments
+
+    if Item.where('id < ?', @item.id).maximum(:id) == nil
+      @prevItem = Item.find(@item.id = params[:id])
+    else
+      @prevItem = Item.where('id < ?', @item.id).maximum(:id)
+    end
+    if Item.where('id > ?', @item.id).minimum(:id) == nil
+      @nextItem = Item.find(@item.id=params[:id])
+    else
+      @nextItem = Item.where('id > ?', @item.id).minimum(:id)
+    end
   end
 
   private
