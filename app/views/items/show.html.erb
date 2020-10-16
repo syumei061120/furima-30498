@@ -87,29 +87,66 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
-      <p class="comment-warn">
-        相手のことを考え丁寧なコメントを心がけましょう。
-        <br>
-        不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+    <div class="input-comment">
+      <% unless @item.purchace.present? %>
+        <% if current_user %>
+          <%= form_with model: [@item, @comment], local: true  do |f| %>
+            <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"comment-text" %>
+            <p class="comment-warn">
+              相手のことを考え丁寧なコメントを心がけましょう。
+              <br>
+              不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            </p>
+            <%= f.submit "コメントする" ,image_tag:"comment.png" ,class:"comment-btn" ,width:"20",height:"25"%>
+          <% end %>
+        <% else %>
+          <div class="comments-message">
+            コメントの投稿には新規登録/ログインが必要です
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="comments">
+      <h4 class="comments-title">コメント一覧</h4>
+        <% if @comments.present? %>
+          <div class='comments-list',id='comments-list'>
+            <% @comments.reverse_each do |comment| %>
+              <div class="comments">
+                <div class=comments-nickname>
+                  <% if comment.user == @item.user%>
+                  <%= link_to "(出品者)#{comment.user.nickname}", "#" %>
+                  <% else %>
+                    <%= link_to comment.user.nickname, "#" %>
+                  <% end %>
+                </div>
+                <div class="comments-text-box">
+                  <div class=comments-text>
+                    <%= comment.text %><br>
+                  </div>
+                  <div class=comments-created-at>
+                    <%= l comment.created_at%>
+                  </div>
+                </div>
+              </div>
+           <% end %>
+          </div>
+        <% else %>
+        <div class="comments-message">
+          投稿されたコメントはありません...
+        </div>
+        <% end %>
+    </div>
   </div>
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
+    <div class="links">
+      <a href="#" class="change-item-btn">
+        ＜ 前の商品
+      </a>
+      <a href="#" class="change-item-btn">
+        後ろの商品 ＞
+      </a>
+    </div>
+    <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
   </div>
-  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
-</div>
 
 <%= render "shared/footer" %>
 
