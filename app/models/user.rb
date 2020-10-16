@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :item
   has_one :purchace
+  has_many :comments
 
   name_validation = /\A[ぁ-んァ-ン一-龥]/
   name_kana_validation = /\A[ァ-ヶー－]+\z/

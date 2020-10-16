@@ -27,3 +27,6 @@ ja:
         address_line: 番地
         telephone: 電話番号
         token: クレジットカード情報
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
