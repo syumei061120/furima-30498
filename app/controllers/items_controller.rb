@@ -44,6 +44,11 @@ class ItemsController < ApplicationController
     @items = @p.result
   end
 
+  def show
+    @comment = Comment.new
+    @comments = @item.comments
+  end
+
   private
 
   def item_params
