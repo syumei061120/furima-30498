@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers:{
     omniauth_callbacks: 'users/omniauth_callbacks',
-    registrations: 'user/registrations'
+    registrations: 'users/registrations'
   }
   
   root to: 'items#index'
@@ -12,6 +12,5 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
   resources :addresses
 end
