@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :purchace_address do
+  factory :purchase_address do
     user_id { Faker::Number.between(from: 1, to: 100) }
     item_id { Faker::Number.between(from: 1, to: 1000) }
     postal_code {'123-4567'}

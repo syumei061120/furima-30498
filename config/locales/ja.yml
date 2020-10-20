@@ -20,7 +20,7 @@ ja:
         price: 価格
   activemodel:
     attributes:
-      purchace_address:
+      purchase_address:
         postal_code: 郵便番号
         state_id: 都道府県
         city: 市区町村

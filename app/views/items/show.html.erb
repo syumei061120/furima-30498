@@ -10,7 +10,7 @@
       <% @item.images.each do |image| %>
         <div class='item-img-content-box'>
           <%= image_tag image ,class:"item-box-img" %>
-          <% if @item.purchace.present? %>
+          <% if @item.purchase.present? %>
             <div class='show-sold-out'>
               <span>Sold Out!!</span>
             </div>
@@ -29,14 +29,14 @@
 
     <% if user_signed_in?%>
         <% if current_user == @item.user%>
-          <% unless @item.purchace.present? %>
+          <% unless @item.purchase.present? %>
             <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
             <p class='or-text'>or</p>
             <%= link_to '削除', item_path , method: :delete, class:'item-destroy' %>
           <% end %>
         <% else %>
-          <% unless @item.purchace.present? %>
-            <%= link_to '購入画面に進む', item_purchaces_path(@item.id) ,class:"item-red-btn"%>
+          <% unless @item.purchase.present? %>
+            <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
           <% end %>
         <% end %>
     <% end %>
@@ -88,7 +88,7 @@
 
   <div class="comment-box">
     <div class="input-comment">
-      <% unless @item.purchace.present? %>
+      <% unless @item.purchase.present? %>
         <% if current_user %>
           <%= form_with model: [@item, @comment], local: true  do |f| %>
             <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"comment-text" %>

@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_many_attached :images
-  has_one :purchace
+  has_one :purchase
   has_many :comments
 
   with_options presence: true do

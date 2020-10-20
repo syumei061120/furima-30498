@@ -1,4 +1,4 @@
-class PurchaceAddress
+class PurchaseAddress
   include ActiveModel::Model
   attr_accessor :user_id, :postal_code, :state_id, :city, :address_line, :building, :telephone, :token, :item_id
   with_options presence: true do
@@ -11,7 +11,7 @@ class PurchaceAddress
   end
 
   def save
-    purchace = Purchace.create(user_id: user_id, item_id: item_id)
-    Address.create(purchace_id: purchace.id, postal_code: postal_code, state_id: state_id, city: city, address_line: address_line, building: building, telephone: telephone)
+    purchase = Purchase.create(user_id: user_id, item_id: item_id)
+    Address.create(purchase_id: purchase.id, postal_code: postal_code, state_id: state_id, city: city, address_line: address_line, building: building, telephone: telephone)
   end
 end

@@ -16,7 +16,7 @@
 ### Association
 
 -has_many :items
--has_many :purchaces
+-has_many :purchases
 -has_many :comments
 -has_one  :sns_credential
 
@@ -37,10 +37,10 @@
 ### Association
 
 -belongs_to :user
--has_one :purchace
+-has_one :purchase
 -has_many :comments
 
-## purchaces テーブル
+## purchases テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -57,7 +57,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| purchace         | references | null: false, foreign_key: true |
+| purchase         | references | null: false, foreign_key: true |
 | postal_code      | string     | null: false                    |
 | state_id         | int        | null: false                    |
 | city             | string     | null: false                    |
@@ -67,7 +67,7 @@
 
 ### Association
 
--belongs_to :purchace
+-belongs_to :purchase
 
 ## comments テーブル
 

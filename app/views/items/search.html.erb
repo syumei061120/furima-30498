@@ -18,7 +18,7 @@
                 <div class='search-item-img-content'>
                   <% item.images.each do |image| %>
                     <%= image_tag image, class: "search-item-img" %>
-                    <% if item.purchace.present? %>
+                    <% if item.purchase.present? %>
                       <div class='search-sold-out'>
                         <span>Sold Out!!</span>
                       </div>
