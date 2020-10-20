@@ -25,6 +25,7 @@
 }
 
 .facebook{
+  width: 30%;
   text-align: center;
   border: solid 3px blue;
   font-size: 15px;
@@ -41,7 +42,7 @@
 }
 
 .google{
-
+  width: 30%;
   text-align: center;
   border: solid 3px red;
   font-size: 15px;  
