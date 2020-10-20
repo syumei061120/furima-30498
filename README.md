@@ -17,6 +17,8 @@
 
 -has_many :items
 -has_many :purchaces
+-has_many :comments
+-has_one  :sns_credential
 
 ## items テーブル
 
@@ -36,6 +38,7 @@
 
 -belongs_to :user
 -has_one :purchace
+-has_many :comments
 
 ## purchaces テーブル
 
@@ -66,3 +69,25 @@
 
 -belongs_to :purchace
 
+## comments テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| state_id         | references | null: false, foreign_key: true |
+| comment          | text       | null: false                    |
+
+### Association
+-belongs_to :user
+-belongs_to :item
+
+## sns_credentials テーブル
+
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| provider         | string     |                                |
+| uid              | string     |                                |
+| user             | references | foreign_key: true              |
+
+### Association
+-belongs_to :user
