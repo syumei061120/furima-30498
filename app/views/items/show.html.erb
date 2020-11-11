@@ -1,5 +1,4 @@
 <%= render "shared/header" %>
-<% breadcrumb :item %>
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
@@ -8,14 +7,14 @@
     </h2>
     <div class='item-img-content'>
       <% @item.images.each do |image| %>
-        <div class='item-img-content-box'>
-          <%= image_tag image ,class:"item-box-img" %>
-          <% if @item.purchase.present? %>
-            <div class='show-sold-out'>
-              <span>Sold Out!!</span>
-            </div>
-          <% end %>
+      <div class='item-img-content-box'>
+        <%= image_tag image ,class:"item-box-img" %>
+        <% if @item.purchase.present? %>
+        <div class='show-sold-out'>
+          <span>Sold Out!!</span>
         </div>
+        <% end %>
+      </div>
       <% end %>
     </div>
     <div class="item-price-box">
@@ -28,17 +27,17 @@
     </div>
 
     <% if user_signed_in?%>
-        <% if current_user == @item.user%>
-          <% unless @item.purchase.present? %>
-            <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
-            <p class='or-text'>or</p>
-            <%= link_to '削除', item_path , method: :delete, class:'item-destroy' %>
-          <% end %>
-        <% else %>
-          <% unless @item.purchase.present? %>
-            <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
-          <% end %>
-        <% end %>
+    <% if current_user == @item.user%>
+    <% unless @item.purchase.present? %>
+    <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
+    <p class='or-text'>or</p>
+    <%= link_to '削除', item_path , method: :delete, class:'item-destroy' %>
+    <% end %>
+    <% else %>
+    <% unless @item.purchase.present? %>
+    <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
+    <% end %>
+    <% end %>
     <% end %>
 
 
@@ -89,60 +88,59 @@
   <div class="comment-box">
     <div class="input-comment">
       <% unless @item.purchase.present? %>
-        <% if current_user %>
-          <%= form_with model: [@item, @comment], local: true  do |f| %>
-            <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"comment-text" %>
-            <p class="comment-warn">
-              相手のことを考え丁寧なコメントを心がけましょう。
-              <br>
-              不快な言葉遣いなどは利用制限や退会処分となることがあります。
-            </p>
-            <%= f.submit "コメントする" ,image_tag:"comment.png" ,class:"comment-btn" ,width:"20",height:"25"%>
-          <% end %>
-        <% else %>
-          <div class="comments-message">
-            コメントの投稿には新規登録/ログインが必要です
-          </div>
-        <% end %>
+      <% if current_user %>
+      <%= form_with model: [@item, @comment], local: true  do |f| %>
+      <%= f.text_area :text, placeholder: "コメントする", rows: "2",class:"comment-text" %>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <%= f.submit "コメントする" ,image_tag:"comment.png" ,class:"comment-btn" ,width:"20",height:"25"%>
+      <% end %>
+      <% else %>
+      <div class="comments-message">
+        コメントの投稿には新規登録/ログインが必要です
+      </div>
+      <% end %>
       <% end %>
     </div>
     <div class="comments">
       <h4 class="comments-title">コメント一覧</h4>
-        <% if @comments.present? %>
-          <div class='comments-list',id='comments-list'>
-            <% @comments.reverse_each do |comment| %>
-              <div class="comments">
-                <div class=comments-nickname>
-                  <% if comment.user == @item.user%>
-                  <%= link_to "(出品者)#{comment.user.nickname}", "#" %>
-                  <% else %>
-                    <%= link_to comment.user.nickname, "#" %>
-                  <% end %>
-                </div>
-                <div class="comments-text-box">
-                  <div class=comments-text>
-                    <%= comment.text %><br>
-                  </div>
-                  <div class=comments-created-at>
-                    <%= l comment.created_at%>
-                  </div>
-                </div>
-              </div>
-           <% end %>
+      <% if @comments.present? %>
+      <div class='comments-list' ,id='comments-list'>
+        <% @comments.reverse_each do |comment| %>
+        <div class="comments">
+          <div class=comments-nickname>
+            <% if comment.user == @item.user%>
+            <%= link_to "(出品者)#{comment.user.nickname}", "#" %>
+            <% else %>
+            <%= link_to comment.user.nickname, "#" %>
+            <% end %>
           </div>
-        <% else %>
-        <div class="comments-message">
-          投稿されたコメントはありません...
+          <div class="comments-text-box">
+            <div class=comments-text>
+              <%= comment.text %><br>
+            </div>
+            <div class=comments-created-at>
+              <%= l comment.created_at%>
+            </div>
+          </div>
         </div>
         <% end %>
+      </div>
+      <% else %>
+      <div class="comments-message">
+        投稿されたコメントはありません...
+      </div>
+      <% end %>
     </div>
   </div>
-    <div class="links">
-      <%= link_to "＜ 前の商品", item_path(@prevItem),class: "change-item-btn" %>
-      <%= link_to "後ろの商品 ＞", item_path(@nextItem),class: "change-item-btn" %>
-    </div>
-    <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+  <div class="links">
+    <%= link_to "＜ 前の商品", item_path(@prevItem),class: "change-item-btn" %>
+    <%= link_to "後ろの商品 ＞", item_path(@nextItem),class: "change-item-btn" %>
   </div>
+  <a href="#" class='another-item'><%= @item.category.name %>をもっと見る</a>
+</div>
 
 <%= render "shared/footer" %>
-

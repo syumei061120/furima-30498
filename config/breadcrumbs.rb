@@ -1,16 +1,4 @@
-crumb :root do
-  link "Top", root_path
-end
 
-crumb :search do
-  link "検索画面", search_items_path
-  parent :root
-end
-
-crumb :item do
-  link "商品詳細ページ" , ""
-  parent :search
-end
 
 # crumb :projects do
 #   link "Projects", projects_path
